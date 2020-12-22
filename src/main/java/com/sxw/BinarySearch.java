@@ -14,23 +14,30 @@ public class BinarySearch {
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = i;
         }
-        System.out.println(find(8,numbers));
+        System.out.println(find(2,numbers));
 
     }
 
-    public static boolean find(int target,int[] numbers){
+    /**
+     * 二分查找
+     *
+     * @param target 待查找的数字
+     * @param numbers 数字集合
+     * @return 待查找的数字 在 数字集合中的索引值,未查询到返回 -1
+     */
+    public static int find(int target,int[] numbers){
         int left = 0;
         int right = numbers.length -1;
         while (left < right){
             int mid = (left + right)/2;
             if(numbers[mid] == target){
-                return true;
+                return mid;
             }else if(numbers[mid] > target){
                 right = mid - 1;
             }else if(numbers[mid] < target){
                 left = mid + 1;
             }
         }
-        return false;
+        return -1;
     }
 }
